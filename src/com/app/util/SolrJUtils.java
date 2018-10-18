@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrQuery.ORDER;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -130,13 +131,13 @@ public class SolrJUtils {
 	 */
 	public static <T> List<T> queryHighlight(List<T> list, QueryResponse response) {
 		Map<String, Map<String, List<String>>> highlightresult = response.getHighlighting();
-        for (T luceneBean : list) {
-            String id = ClassUtil.getInvoke("id", luceneBean).toString();;
+        for (T t : list) {
+            String id = ClassUtil.getInvoke("id", t).toString();;
             if (highlightresult.get(id) != null && highlightresult.get(id).get("title") != null) {
-            	ClassUtil.setInvoke("title", new Class[] { String.class }, new Object[] { highlightresult.get(id).get("title").get(0) }, luceneBean);
+            	ClassUtil.setInvoke("title", new Class[] { String.class }, new Object[] { highlightresult.get(id).get("title").get(0) }, t);
             }
             if (highlightresult.get(id) != null && highlightresult.get(id).get("ocrtext") != null) {
-            	ClassUtil.setInvoke("ocrtext", new Class[] { String.class }, new Object[] { highlightresult.get(id).get("ocrtext").get(0) }, luceneBean);
+            	ClassUtil.setInvoke("ocrtext", new Class[] { String.class }, new Object[] { highlightresult.get(id).get("ocrtext").get(0) }, t);
             }
         }
         return list;
@@ -212,6 +213,17 @@ public class SolrJUtils {
 			query.addFilterQuery(str + ":" + queryStr);
 		}
 		return query;
+	}
+
+	/**
+	 * 设置排序
+	 * @param query
+	 * @param field	排序字段
+	 * @param order 排序方式，正序、倒序
+	 */
+	public static void setSortQuery(SolrQuery query, String field, ORDER order) {
+		query.addSort(field, order);
+//		SolrQuery.ORDER.asc;
 	}
 
 	/**
