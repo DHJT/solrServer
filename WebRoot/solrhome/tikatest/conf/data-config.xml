@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataConfig>
+  <dataSource type="BinFileDataSource"/>
+    <!-- readOnly="true" -->
+
+  <document>
+    <entity name="tika-test" processor="TikaEntityProcessor"
+    	url="" format="text">
+      <field column="Author" name="author" meta="true" />
+      <field column="title" name="title" meta="true" />
+      <field column="text" name="text" />
+    </entity>
+  </document>
+</dataConfig>
