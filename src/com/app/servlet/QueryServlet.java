@@ -14,23 +14,12 @@ import net.sf.json.JSONSerializer;
 
 @SuppressWarnings("serial")
 public class QueryServlet extends HttpServlet {
+
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
-//		String txt = Util.toUTF8(request.getParameter("txt"));
-//		String iType = Util.toUTF8(request.getParameter("iType"));
-//		String iType2 = Util.toUTF8(request.getParameter("iType2"));
-//		String model = Util.toUTF8(request.getParameter("model"));
-//		ServletService ss = new ServletService();
-//		List<SolrBean> list;
-//		try {
-//			list = ss.getResult(txt,model,iType,iType2);
-//			System.out.println(list.size());
-//			write(list, response);
-//		} catch (Exception e) {
-//			write(null, response);
-//		}
 		doGet(request, response);
 	}
+
 	@Override
 	public  void doGet(HttpServletRequest request, HttpServletResponse response){
 		String txt = Util.toUTF8(request.getParameter("txt"));
@@ -40,12 +29,13 @@ public class QueryServlet extends HttpServlet {
 		ServletService ss = new ServletService();
 		List<SolrBean> list;
 		try {
-			list = ss.getResult(txt,model,iType,iType2);
+			list = ss.getResult(txt, model, iType, iType2);
 			write(list, response);
 		} catch (Exception e) {
 			write(null, response);
 		}
 	}
+
 	// 返回到前台
 	private void write(Object result, HttpServletResponse response) {
 		try {

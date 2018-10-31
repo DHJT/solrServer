@@ -233,6 +233,20 @@ public class SolrJUtils {
 	 * @param clazz
 	 * @param queryStr
 	 * @param queryModel
+	 */
+	public static void setQueryOrConfig1(SolrQuery query, String[] fields, String queryStr, String queryModel) {
+		query.setQuery(queryStr);
+		for (String field : fields) {
+			query.addField(field);
+		}
+	}
+	/**
+	 * 一体化检索query设置 or查询
+	 *
+	 * @param query
+	 * @param clazz
+	 * @param queryStr
+	 * @param queryModel
 	 * @param iType
 	 */
 	public static SolrQuery setQueryOrConfig(SolrQuery query, Class clazz, String queryString, String queryModel,
