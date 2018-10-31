@@ -2,6 +2,14 @@
 <!-- @author DHJT 2018-10-17 -->
 
 -------------------
+## v7-1.0.1
+#### bug修复
+- `solrJ`代码升级后部分代码不可用
+- 缺少jar包：`json-lib-2.2.1-jdk15.jar`,`ezmorph-1.0.6.jar`,`commons-beanutils-1.8.0.jar`
+    + 主要是另需引入的jar包，用来通过http返回格式化json结果
+- 补充v6版本的`web.servlet.xml`,`web.single.xml`
+
+-------------------
 ## v7-1.0
 #### 新特性
 - `Solr`升级至<kbd>7.5.0</kbd>

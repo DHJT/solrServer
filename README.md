@@ -8,6 +8,7 @@ A Demo for Apache Solr, you can get something by searching from this Server.
 - Java代码`SolrJ`操作（6.6.0版本） 
 - `Solr`升级（7.5.0版本） 2018-10-31
     + 版本分支<kbd>v7-1.0</kbd>
+    + 参考文章[CentOS7搭建solr7.2][1]
 
 ## 现场部署
 1. 获取所需的solr服务地址：`http://localhost:8080/solr/`
@@ -89,3 +90,4 @@ A Demo for Apache Solr, you can get something by searching from this Server.
 - [Java实现Slor实体bean数据的索引创建](http://blog.csdn.net/boonya/article/details/57420823)
 - [solr6.3.0升级与IK动态词库自动加载](http://www.cnblogs.com/liang1101/articles/6395016.html)
 - [solr6.6 solrJ索引富文本(word/pdf)文件](https://www.cnblogs.com/shaosks/p/8033362.html) 
+[1]: http://blog.51cto.com/12889016/2103167 'CentOS7搭建solr7.2'

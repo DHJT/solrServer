@@ -34,14 +34,15 @@ public class SolrJUtils {
 
 	private static HttpSolrClient init(HttpSolrClient httpSolrClient) throws SolrServerException, IOException {
 		httpSolrClient.setConnectionTimeout(100);
-		httpSolrClient.setDefaultMaxConnectionsPerHost(100);
-		httpSolrClient.setMaxTotalConnections(100);
+//		httpSolrClient.setDefaultMaxConnectionsPerHost(100);
+//		httpSolrClient.setMaxTotalConnections(100);
 		return httpSolrClient;
 	}
 
 	@SuppressWarnings("deprecation")
 	public static SolrClient getClient() throws SolrServerException, IOException {
-		HttpSolrClient httpSolrClient = new HttpSolrClient(solrBaseUrl);// early
+//		HttpSolrClient httpSolrClient = new HttpSolrClient(solrBaseUrl);// early
+		HttpSolrClient httpSolrClient = new HttpSolrClient.Builder(solrBaseUrl).build();
 		// version
 		init(httpSolrClient);
 		return httpSolrClient;
@@ -49,7 +50,7 @@ public class SolrJUtils {
 
 	@SuppressWarnings("deprecation")
 	public static SolrClient getClient(String solrUrl) throws SolrServerException, IOException {
-		HttpSolrClient httpSolrClient = new HttpSolrClient(solrUrl);// early
+		HttpSolrClient httpSolrClient = new HttpSolrClient.Builder(solrUrl).build();
 																	// version
 		init(httpSolrClient);
 		return httpSolrClient;
