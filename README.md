@@ -2,6 +2,8 @@
 <!-- @author DHJT 2018-10-17 -->
 A Demo for Apache Solr, you can get something by searching from this Server.
 
+![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
+
 ## 环境
 - 开发工具：Eclipse；
 - 数据库：MariaDb；

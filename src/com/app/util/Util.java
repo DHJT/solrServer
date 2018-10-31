@@ -48,6 +48,7 @@ public class Util {
 	private static sun.misc.BASE64Encoder encoder = new sun.misc.BASE64Encoder();
 	private static sun.misc.BASE64Decoder decoder = new sun.misc.BASE64Decoder();
 	private static long currentId=0;
+
 	/**
 	 * 判断布尔
 	 *
@@ -59,6 +60,23 @@ public class Util {
 			return true;
 		else
 			return false;
+	}
+
+	/**
+	 * 获取obj的int值
+	 * @param obj
+	 * @return
+	 */
+	public static int getInt(Object obj) {
+		if (obj != null) {
+			try {
+				return Integer.parseInt(obj.toString());
+			} catch (Exception e) {
+				return 0;
+			}
+		} else {
+			return 0;
+		}
 	}
 
 	/**
@@ -88,8 +106,7 @@ public class Util {
 	}
 
 	// 最后的aa表示“上午”或“下午” HH表示24小时制 如果换成hh表示12小时制
-	// SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss
-	// aa");
+	// SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss aa");
 	final public static SimpleDateFormat DF_DATE = new SimpleDateFormat("yyyy-MM-dd");
 	final public static SimpleDateFormat DF_TIME = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 

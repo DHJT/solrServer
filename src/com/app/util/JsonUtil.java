@@ -8,8 +8,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-
-
 import net.sf.ezmorph.object.DateMorpher;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -17,9 +15,9 @@ import net.sf.json.JsonConfig;
 import net.sf.json.util.JSONUtils;
 
 public class JsonUtil {
-	 
+
     public static void main(String[] args) {
-//      
+//
 //      User user = new User(1, "123",new Date());
 //      User user1 = new User(2, "023",new Date());
 //      List<User> list = new ArrayList<User>();
@@ -33,6 +31,7 @@ public class JsonUtil {
 //          System.out.println(usert.getName());
 //      }
     }
+
 	/**
 	 * 转换为json字符串时，过滤集合类型
 	 */
@@ -41,11 +40,11 @@ public class JsonUtil {
 	/**
 	 * 转换为json字符串时，过滤volumns，files，documents属性
 	 */
-	private static JsonConfig FILTER = new JsonConfig(); 
-	
+	private static JsonConfig FILTER = new JsonConfig();
+
 	/**
 	 * 将对象obj转化为json字符串，允许指定一个JsonConfig参数
-	 * 
+	 *
 	 * @see ces.gdda.App#COLLECTION_FILTER
 	 * @see ces.gdda.App#ARCHIVE_FILTER
 	 * @param obj
@@ -59,7 +58,7 @@ public class JsonUtil {
 		else
 			return JSONObject.fromObject(obj, FILTER).toString();
 	}
-    
+
     /**
      * 函数功能说明: 把一个给定的对象转换成json字符串的格式
      *              如果给定的对象是一个单一的对象
@@ -75,7 +74,7 @@ public class JsonUtil {
         String formatString = "yyyy-MM-dd";
         return getStrFromObject(object, formatString);
     }
-     
+
     /**
      * 函数功能说明: 把一个给定的对象转换成json字符串的格式
      *              如果给定的对象是一个单一的对象的时候，返回的是一个单一对象的字符串的格式
@@ -99,21 +98,21 @@ public class JsonUtil {
         }
         return (jsonString==null)?"{}":jsonString;
     }
-     
+
     /**
      * 函数功能说明: 设定日期的转换格式
      * 修改者名字:  fuweiwei
      * 修改日期 : 2014年7月3日 下午2:50:25
      */
-    private static void setDataFormat2JAVA(){ 
+    private static void setDataFormat2JAVA(){
         JSONUtils.getMorpherRegistry().registerMorpher(new DateMorpher(new String[]{
                 "yyyy-MM-dd","yyyy-MM-dd HH:mm:ss"}));
-         
+
     }
-     
+
     /**
      * 函数功能说明: 把一个指定的jsonString字符串，转换为一个clazz对象
-     * 形如{"id" : idValue, "name" : nameValue, "aBean" : {"aBeanId" : aBeanIdValue, ...}} 
+     * 形如{"id" : idValue, "name" : nameValue, "aBean" : {"aBeanId" : aBeanIdValue, ...}}
      * 修改者名字:  fuweiwei
      * 修改日期 : 2014年7月3日 下午3:14:31
      * @param jsonString 进行转换的字符串
@@ -130,15 +129,15 @@ public class JsonUtil {
         }
         return JSONObject.toBean(jsonObject, clazz);
     }
-     
+
     /**
      * 函数功能说明: 从一个JSON 对象字符格式中得到一个java对象，其中dogs,cats表示的各是一类的集合，形如：
-     * {"id" : idValue, "name" : nameValue, "cats" : {"catId" : catIdValue, ...},dogs:[{}, {}, ...]} 
+     * {"id" : idValue, "name" : nameValue, "cats" : {"catId" : catIdValue, ...},dogs:[{}, {}, ...]}
      * 修改者名字:  fuweiwei
      * 修改日期 : 2014年7月3日 下午3:20:31
      * @param jsonString
      * @param clazz
-     * @param map 集合属性的类型 (key : 集合属性名, value : 集合属性类型class) 
+     * @param map 集合属性的类型 (key : 集合属性名, value : 集合属性类型class)
      *          如：Map map = new HashMap();
      *          map.put("dogs",Dog.class);
      *          map.put("cats",Cat.class);
@@ -154,10 +153,10 @@ public class JsonUtil {
         }
         return JSONObject.toBean(jsonObject, clazz, map);
     }
-     
+
     /**
      * 函数功能说明: 从一个JSON数组得到一个对象数组
-     *      形如格式：[{"id" : idValue, "name" : nameValue}, {"id" : idValue, "name" : nameValue}, ...]   
+     *      形如格式：[{"id" : idValue, "name" : nameValue}, {"id" : idValue, "name" : nameValue}, ...]
      * 修改者名字:  fuweiwei
      * 修改日期 : 2014年7月3日 下午4:52:23
      * @param jsonString 要进行转换的对象字符串
@@ -165,18 +164,18 @@ public class JsonUtil {
      * @return
      */
     public static Object[] getObjectArray(String jsonString,Class<?> clazz){
-        setDataFormat2JAVA();     
-        JSONArray array = JSONArray.fromObject(jsonString);     
-        Object[] obj = new Object[array.size()];     
-        for(int i = 0; i < array.size(); i++){     
-            JSONObject jsonObject = array.getJSONObject(i);     
-            obj[i] = JSONObject.toBean(jsonObject, clazz);     
-        }     
-        return obj;     
+        setDataFormat2JAVA();
+        JSONArray array = JSONArray.fromObject(jsonString);
+        Object[] obj = new Object[array.size()];
+        for(int i = 0; i < array.size(); i++){
+            JSONObject jsonObject = array.getJSONObject(i);
+            obj[i] = JSONObject.toBean(jsonObject, clazz);
+        }
+        return obj;
     }
     /**
      * 函数功能说明: 从一个JSON数组得到一个java的对象数组
-     * [{"id" : idValue, "name" : nameValue}, {"id" : idValue, "name" : nameValue}, ...] 
+     * [{"id" : idValue, "name" : nameValue}, {"id" : idValue, "name" : nameValue}, ...]
      * 修改者名字:  fuweiwei
      * 修改日期 : 2014年7月3日 下午6:44:06
      * @param jsonString
@@ -185,18 +184,18 @@ public class JsonUtil {
      * @return
      */
     public static Object[] getObjectArray(String jsonString,Class<?> clazz,Map<String,Object> map){
-        setDataFormat2JAVA();     
-        JSONArray array = JSONArray.fromObject(jsonString);     
-        Object[] obj = new Object[array.size()];     
-        for(int i = 0; i < array.size(); i++){     
-            JSONObject jsonObject = array.getJSONObject(i);     
-            obj[i] = JSONObject.toBean(jsonObject, clazz,map);     
-        }     
-        return obj;     
+        setDataFormat2JAVA();
+        JSONArray array = JSONArray.fromObject(jsonString);
+        Object[] obj = new Object[array.size()];
+        for(int i = 0; i < array.size(); i++){
+            JSONObject jsonObject = array.getJSONObject(i);
+            obj[i] = JSONObject.toBean(jsonObject, clazz,map);
+        }
+        return obj;
     }
-     
+
     /**
-     * 函数功能说明:从一个JSON数组得到一个java对象集合 
+     * 函数功能说明:从一个JSON数组得到一个java对象集合
      * 修改者名字:  fuweiwei
      * 修改日期 : 2014年7月3日 下午6:51:23
      * @param jsonString
@@ -234,8 +233,8 @@ public class JsonUtil {
         }
         return list;
     }
-     
-     
+
+
     /**
      * 函数功能说明: 从json hash表达式中获取一个map，该map支持嵌套功能
      * 形如：{"id" : "johncon", "name" : "小强"}
@@ -256,10 +255,10 @@ public class JsonUtil {
         }
         return map;
     }
-     
+
     /**
      * 函数功能说明: 从json数组中得到相应的java数组
-     * json形如：["123", "456"] 
+     * json形如：["123", "456"]
      * 修改者名字:  fuweiwei
      * 修改日期 : 2014年7月3日 下午6:59:55
      * @param jsonString
@@ -271,7 +270,7 @@ public class JsonUtil {
     }
 	/**
 	 * 将对象obj转化为json字符串
-	 * 
+	 *
 	 * @param obj
 	 * @param jsonConfig
 	 * @return
@@ -285,7 +284,7 @@ public class JsonUtil {
 
 	/**
 	 * 将对象obj转化为json字符串，允许指定一个JsonConfig参数
-	 * 
+	 *
 	 * @see ces.gdda.App#COLLECTION_FILTER
 	 * @see ces.gdda.App#ARCHIVE_FILTER
 	 * @param obj
@@ -302,7 +301,7 @@ public class JsonUtil {
 
 	/**
 	 * 将异常e转化为json字符串
-	 * 
+	 *
 	 * @param e
 	 * @return
 	 */
