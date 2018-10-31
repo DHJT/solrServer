@@ -6,6 +6,7 @@
 #### 新特性
 - `SolrJ`部分代码更新
     - 添加`BaseServlet`类
+- `demo`核心中加入索引的数据，可以在页面中'http://localhost:8080/solrServer/index.html#/demo/query'查看到
 
 #### bug修复
 - 缺少jar包：`mariadb-java-client-2.3.0.jar`
