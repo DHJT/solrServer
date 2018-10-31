@@ -6,6 +6,8 @@ A Demo for Apache Solr, you can get something by searching from this Server.
 - 开发工具：Eclipse；
 - 数据库：MariaDb；
 - Java代码`SolrJ`操作（6.6.0版本） 
+- `Solr`升级（7.5.0版本） 2018-10-31
+    + 版本分支<kbd>v7-1.0</kbd>
 
 ## 现场部署
 1. 获取所需的solr服务地址：`http://localhost:8080/solr/`
