@@ -12,6 +12,23 @@ A Demo for Apache Solr, you can get something by searching from this Server.
     + 版本分支<kbd>v7-1.0</kbd>
     + 参考文章[CentOS7搭建solr7.2][1]
 
+## 使用
+### 添加动态加载字典表功能；
+`ik.conf`文件说明：
+``` ini
+files=dynamicdic.txt
+lastupdate=0
+```
+- `files`为动态字典列表，可以设置多个字典表，用逗号进行分隔，默认动态字典表为`dynamicdic.txt`；
+- `lastupdate`默认值为0，每次对动态字典表修改后请+1，不然不会将字典表中新的词语添加到内存中。
+    + `lastUpdate`为`long`类型，可以用时间戳(2018-08-23, 之前版本不可用)
+- 测试可以在`http://127.0.0.1:8080/solrServer/index.html#/demo/schema?field=author`页面中进行，Analyse
+    + 本测试用例`author`字段使用了`ik`中文分词，可以在`demo`核心下，`Analysis`中进行测试
+
+### 修改核心名称
+每一个核心下有一个配置文件`core.properties`,修改`name`属性的值即可修改该SolrCore的名称。
+- 在多项目中可以使用同一个`solr`服务器，只需要为每个项目建立不同的`solr`核心即可，这样可以避免每个项目配置相互影响。
+
 ## 现场部署
 1. 获取所需的solr服务地址：`http://localhost:8080/solr/`
 2. 修改solr服务器中`web.xml`中`<env-entry-value>`的值，指定Solr核心存放的位置：`C:/Workspaces/QRwork/solr/WebRoot/solrhome`
@@ -22,9 +39,6 @@ A Demo for Apache Solr, you can get something by searching from this Server.
 - 启动：'solr.cmd start'
 - 使用命令：`C:\DEVELOPERS\Apache Solr\solr-6.4.1\bin\solr.cmd create -c item -d basic_configs`
 - 停止：`solr.cmd stop -all`
-
-## 修改核心名称
-该核心下有有一个配置文件`core.properties`,修改`name`属性的值即可修改该SolrCore的名称。
 
 ## 移植/复用核心
 - 可直接复制某个核心到其他solr服务上，服务重启后，可直接使用
