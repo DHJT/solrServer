@@ -2,6 +2,15 @@
 <!-- @author DHJT 2018-10-17 -->
 
 -------------------
+## v7m-1.0
+#### 新特性
+- 将项目转为`Maven`项目
+- 更新`.gitignore`文件为Maven的`.gitignore`
+
+#### bug修复
+- 将`ik.conf`文件中`files`值改为`dynamicdic.txt`
+
+-------------------
 ## v7-1.0.3
 #### 新特性
 - `SolrJ`引入中文分词器：ik-analyzer
