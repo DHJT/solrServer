@@ -60,22 +60,20 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
-
-    <!-- @author DHJT 2018-10-31 添加servlet -->
-    <servlet>
-		<servlet-name>indexsolr</servlet-name>
-		<servlet-class>com.app.servlet.SolrServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>indexsolr</servlet-name>
-		<url-pattern>/indexsolr</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>solrsearch</servlet-name>
-		<servlet-class>com.app.servlet.QueryServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>solrsearch</servlet-name>
-		<url-pattern>/solrsearch</url-pattern>
-	</servlet-mapping>
+  <servlet>
+    <servlet-name>indexsolr</servlet-name>
+    <servlet-class>com.app.servlet.SolrServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>indexsolr</servlet-name>
+    <url-pattern>/indexsolr</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>solrsearch</servlet-name>
+    <servlet-class>com.app.servlet.QueryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>solrsearch</servlet-name>
+    <url-pattern>/solrsearch</url-pattern>
+  </servlet-mapping>
 </web-app>

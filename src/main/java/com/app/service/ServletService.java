@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrRequest.METHOD;
 import org.apache.solr.client.solrj.response.QueryResponse;
 
 import com.app.entity.SolrBean;
@@ -20,11 +21,13 @@ public class ServletService {
 		try {
 			solr = SolrJUtils.buildClient(SolrJUtils.solrBaseUrl + "demo");
 			SolrQuery query = new SolrQuery();
-			SolrJUtils.setQueryOrConfig(query, SolrBean.class, txt, model,iType,iType2);
+			SolrJUtils.setQueryOrConfig(query, SolrBean.class, txt, model, iType, iType2);
 			query.setStart(0);
 			query.setRows(5000);
 			query.setTermsMaxCount(5000);
-			QueryResponse response = solr.query(query);
+			// 默认生成的response是GET方式请求，将其改为POST可以防止header过大报错
+//			QueryResponse response = solr.query(query);
+			QueryResponse response = solr.query(query, METHOD.POST);
 			list = response.getBeans(SolrBean.class);
 //			list = SolrJUtils.getBeans(SolrBean.class, response.getResults());// 使用自己定义的转Bean方法
 		} catch (Exception e) {
