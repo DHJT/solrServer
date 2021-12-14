@@ -18,7 +18,7 @@
 		<mariadb.version>2.3.0</mariadb.version>
 		<json.version>1.9.13</json.version>
 		<jackson.version>2.9.6</jackson.version>
-		<log4j.version>2.11.1</log4j.version>
+		<log4j.version>2.16.0</log4j.version>
 		<!-- log -->
 		<commons-logging.version>1.2</commons-logging.version>
 		<!-- Servlet -->
